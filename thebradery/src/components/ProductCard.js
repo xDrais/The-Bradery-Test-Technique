@@ -6,12 +6,13 @@ function ProductCard(props) { // props.product is the product we are selling
     const product = props.product;
     const cart = useContext(CartContext);
     const productQuantity = cart.getProductQuantity(product.id);
-    console.log(cart.items);
+   // console.log(cart.items);
     return (
         <Card>
             <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-                <Card.Text>${product.price}</Card.Text>
+                <Card.Text>{product.price}  </Card.Text>
+                <Card.Text>{product.inventory} </Card.Text>
                 { productQuantity > 0 ?
                     <>
                         <Form as={Row}>
