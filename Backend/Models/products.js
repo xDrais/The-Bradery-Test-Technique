@@ -1,10 +1,24 @@
-const mongoose = require ('mongoose')
+const db = require('../Config/database')
+class Products{
+    constructor(name,price,inventory){
+        this.name=name;
+        this.price=price;
+        this.inventory=inventory;
 
-const ProductsSchema = new mongoose.Schema({
-    id : {type : Number , required:true, unique: true},
-    name: {type: String,required:true},
-    price: {type:Number,required:true},
-    inventory: {type:String,required:true},
-    imgPATH: {type:String,required:true} ,
-})
-module.exports = mongoose.model('Products', ProductsSchema)
+    }
+ 
+
+    static findAll(){
+        let sql = "SELECT * FROM products;";
+        return db.execute(sql)
+
+    }
+
+    static findById(id){
+        let sql = `SELECT * FROM products WHERE id = ${id};`;
+        return db.execute(sql)
+
+    }
+
+}
+module.exports = Products;

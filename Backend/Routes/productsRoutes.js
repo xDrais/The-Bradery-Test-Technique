@@ -6,10 +6,13 @@ const {getAllProducts,getProductById} = require('../Controllers/productsControll
 //@desc Get all the products from DB
 //@route Get /api/products
 //@acess Public
-router.get('/',getAllProducts)
+router.route("/").get(getAllProducts)
 
 //@desc Get a product by id from DB
 //@route Get /api/products/:id
 //@acess Public
-router.get('/:id',getProductById)
+router.route("/:id").get(getProductById)
+
+
+
 module.exports = router;
